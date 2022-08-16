@@ -1,0 +1,27 @@
+{
+  "name": "fuzzylogic",
+  "version": "1.0.0",
+  "description": "Fuzzy logic calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siavashmohammady66/fuzzylogic-js.git"
+  },
+  "keywords": [
+    "fuzzy",
+    "logic",
+    "fuzzy",
+    "ai",
+    "machine",
+    "learning"
+  ],
+  "author": "siavash mohammady",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/siavashmohammady66/fuzzylogic-js/issues"
+  },
+  "homepage": "https://github.com/siavashmohammady66/fuzzylogic-js#readme"
+}
