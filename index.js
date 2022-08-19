@@ -43,7 +43,6 @@ let Engine = class {
   validateParameter(param) {
     //console.log(param);
     let options = param.options;
-    let optionsPoints = param.options.map(item => item.points);
     if (options.length < 2) {
       console.log("Parameter " + param.name + " should have at least two options")
       throw "There should have at least two options";
@@ -69,7 +68,36 @@ let Engine = class {
       console.log("Parameter " + param.name + " has options with same name")
       throw 'Options should not have the same name';
     }
+    //'Options should cover all axis'
+    //if first & last of two option has intersect they would be merged
+    //merge until no merge possible or only remain one
+    let optionsPoints = param.options.map(item => item.points);
+    optionsPoints = _.orderBy(optionsPoints, (points) => _.last(points));
+    while (optionsPoints.length > 1) {
+      let merged = 0;
+      for (let i = 0; i < optionsPoints.length; i++) {
+        for (let j = i + 1; j < optionsPoints.length; j++) {
 
+          if (i != j) {
+            let pointLength = optionsPoints[i].length;
+            if (optionsPoints[j][0] < optionsPoints[i][pointLength - 1]) {
+              console.log("merge happened");
+              let newItem = [optionsPoints[i][0], optionsPoints[j][0]];
+              let minIndex = Math.min(i, j);
+              let maxIndex = Math.max(i, j);
+              optionsPoints.splice(maxIndex, 1);
+              optionsPoints.splice(minIndex, 1);
+              optionsPoints.push(newItem);
+              continue;
+            }
+          }
+        }
+      }
+      if (merged == 0 & optionsPoints.length > 1) {
+        console.log("Parameter " + param.name + " has axis without covering by any option")
+        throw 'Options should cover all axis';
+      }
+    }
   }
 
   validateparameters() {
