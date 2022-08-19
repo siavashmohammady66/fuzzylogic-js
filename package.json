@@ -4,7 +4,9 @@
   "description": "Fuzzy logic calculator",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "run": "node index.js",
+    "direct": "node directtest.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +25,11 @@
   "bugs": {
     "url": "https://github.com/siavashmohammady66/fuzzylogic-js/issues"
   },
-  "homepage": "https://github.com/siavashmohammady66/fuzzylogic-js#readme"
+  "homepage": "https://github.com/siavashmohammady66/fuzzylogic-js#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
 }
